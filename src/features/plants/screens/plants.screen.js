@@ -11,14 +11,12 @@ const SafeArea = styled(SafeAreaView)`
 `;
 
 const SearchContainer = styled.View`
-  border-radius: 5px;
-  padding: 16px;
+  padding: ${(props) => props.theme.space[3]};
 `;
 
 const PlantListContainer = styled.View`
   flex: 1;
-  padding: 16px;
-  background-color: blue;
+  padding: ${(props) => props.theme.space[3]};
 `;
 
 export const PlantsScreen = () => (
@@ -34,6 +32,6 @@ export const PlantsScreen = () => (
 
 const styles = StyleSheet.create({
   searchbar: {
-    borderRadius: 5
+    borderRadius: 5,
   }
 });

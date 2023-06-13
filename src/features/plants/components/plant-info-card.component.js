@@ -4,22 +4,33 @@ import { Text, StyleSheet } from "react-native";
 import { Card } from "react-native-paper";
 
 const PlantCard = styled(Card)`
-  background-color: white;
+  color: ${(props) => props.theme.colors.bg.primary};
 `;
 
 const PlantCardCover = styled(Card.Cover)`
-  padding: 20px;
-  background-color: white;
+  padding: ${(props) => props.theme.space[3]};
+  color: ${(props) => props.theme.colors.bg.primary};
 `;
 
 const Title = styled.Text`
-  padding: 16px;
-  color: red;
+  font-family: ${(props) => props.theme.fonts.heading};
+  font-size: ${(props) => props.theme.fontSizes.body};
+  color: ${(props) => props.theme.colors.ui.primary};
+`;
+
+const Descript = styled.Text`
+  font-family: ${(props) => props.theme.fonts.body};
+  font-size: ${(props) => props.theme.fontSizes.caption};
+`;
+
+const Info = styled.View`
+  padding: ${(props) => props.theme.space[3]};
 `;
 
 export const PlantInfoCard = ({ plant = {} }) => {
   const {
     name = "Haworthia",
+    description = "Haworthia is a stunning little succulent native to South Africa",
     photos = [
       "https://cafegoldoon.com/wp-content/uploads/2020/07/30b709d73637558530aa1939f80552b6-min-e1594570500238.jpg",
     ],
@@ -34,7 +45,10 @@ export const PlantInfoCard = ({ plant = {} }) => {
         style={styles.cover}
         source={{ uri: photos[0] }}
       />
-      <Title>{name}</Title>
+      <Info>
+        <Title>{name}</Title>
+        <Descript>{description}</Descript>
+      </Info>
     </PlantCard>
   );
 };
