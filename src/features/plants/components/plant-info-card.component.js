@@ -1,59 +1,59 @@
 import React from "react";
-import styled from "styled-components/native";
-import { Text, StyleSheet } from "react-native";
-import { Card } from "react-native-paper";
+import { StyleSheet, View } from "react-native";
+import { SvgXml } from "react-native-svg";
 
-const PlantCard = styled(Card)`
-  color: ${(props) => props.theme.colors.bg.primary};
-`;
+import { Spacer } from "../../../components/spacer/spacer.component";
+import { Text } from "../../../components/typography/text.component";
+import sun from "../../../../assets/sun";
+import difficulty from "../../../../assets/difficulty";
 
-const PlantCardCover = styled(Card.Cover)`
-  padding: ${(props) => props.theme.space[3]};
-  color: ${(props) => props.theme.colors.bg.primary};
-`;
-
-const Title = styled.Text`
-  font-family: ${(props) => props.theme.fonts.heading};
-  font-size: ${(props) => props.theme.fontSizes.body};
-  color: ${(props) => props.theme.colors.ui.primary};
-`;
-
-const Descript = styled.Text`
-  font-family: ${(props) => props.theme.fonts.body};
-  font-size: ${(props) => props.theme.fontSizes.caption};
-`;
-
-const Info = styled.View`
-  padding: ${(props) => props.theme.space[3]};
-`;
+import {
+  PlantCard,
+  PlantCardCover,
+  Descript,
+  Info,
+  SunLeveling,
+  Section,
+  SectionEnd,
+} from "./plant-info-card.styles";
 
 export const PlantInfoCard = ({ plant = {} }) => {
   const {
     name = "Haworthia",
     description = "Haworthia is a stunning little succulent native to South Africa",
     photos = [
-      "https://cafegoldoon.com/wp-content/uploads/2020/07/30b709d73637558530aa1939f80552b6-min-e1594570500238.jpg",
+      "https://www.thetutuguru.com.au/wp-content/uploads/2020/12/Monstera-deliciosa-fruit-salad-plant-2.jpg",
     ],
-    difficultyLevel = 1,
-    sunlightLevel = 2,
+    difficultyLevel = 2,
+    sunLevel = 3,
   } = plant;
 
+  const sunlevelArray = Array.from(new Array(Math.floor(sunLevel)));
   return (
     <PlantCard elevation={5}>
-      <PlantCardCover
-        key={name}
-        style={styles.cover}
-        source={{ uri: photos[0] }}
-      />
+      <PlantCardCover key={name} source={{ uri: photos[0] }} />
       <Info>
-        <Title>{name}</Title>
+        <Text variant="label">{name}</Text>
+        <Section>
+          <SunLeveling>
+            {sunlevelArray.map(() => (
+              <SvgXml xml={sun} width={20} height={20} fill="#728C69" />
+            ))}
+          </SunLeveling>
+          <SectionEnd>
+            {difficultyLevel == 2 && <Text variant="error">MEDIUM</Text>}
+            <Spacer position="left" size="large">
+              <SvgXml xml={difficulty} width={20} height={20} />
+            </Spacer>
+          </SectionEnd>
+        </Section>
         <Descript>{description}</Descript>
       </Info>
     </PlantCard>
   );
 };
 
-const styles = StyleSheet.create({
-  card: { backgroundColor: "white" },
-  cover: { padding: 20, backgroundColor: "white" },
-});
+// const styles = StyleSheet.create({
+//   card: { backgroundColor: "white" },
+//   cover: { padding: 20, backgroundColor: "white" },
+// });
