@@ -7,6 +7,7 @@ import {
   Oswald_400Regular,
 } from "@expo-google-fonts/oswald";
 import { useFonts as useLato, Lato_400Regular } from "@expo-google-fonts/lato";
+import { useFonts as useIranyekan } from "expo-font";
 
 import { theme } from "./src/infrastructure/theme";
 import { PlantsScreen } from "./src/features/plants/screens/plants.screen";
@@ -19,9 +20,13 @@ export default function App() {
     Lato_400Regular,
   });
 
-  if (!oswaldLoaded || !latoLoaded) {
+  const [IranyekanLoaded] = useIranyekan({
+    IranYekan_Regular: require("./assets/fonts/IRANYekanWebRegular.ttf"),
+  });
+
+  if (!oswaldLoaded || !latoLoaded || !IranyekanLoaded) {
     return null;
-  };
+  }
 
   return (
     <>

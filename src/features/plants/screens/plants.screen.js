@@ -5,6 +5,8 @@ import styled from "styled-components/native";
 
 import { PlantInfoCard } from "../components/plant-info-card.component";
 import { Spacer } from "../../../components/spacer/spacer.component";
+import { Text } from "../../../components/typography/text.component";
+import { fonts } from "../../../infrastructure/theme/fonts";
 
 const SafeArea = styled(SafeAreaView)`
   flex: 1;
@@ -15,12 +17,23 @@ const SearchContainer = styled.View`
   padding: ${(props) => props.theme.space[3]};
 `;
 
+const PlantList = styled(FlatList).attrs({
+  contentContainerStyle: {
+    padding: 16,
+  },
+})``;
+
 export const PlantsScreen = () => (
   <SafeArea>
     <SearchContainer>
-      <Searchbar placeholder="search" style={styles.searchbar} />
+      <Searchbar
+        placeholder="جستجو برای گیاه"
+        placeholderTextColor="grey"
+        inputStyle={styles.inputText}
+        style={styles.searchbar}
+      />
     </SearchContainer>
-    <FlatList
+    <PlantList
       data={[
         { name: 1 },
         { name: 2 },
@@ -39,13 +52,17 @@ export const PlantsScreen = () => (
         </Spacer>
       )}
       keyExtractor={(item) => item.name}
-      contentContainerStyle={{ padding: 16 }}
     />
   </SafeArea>
 );
 
 const styles = StyleSheet.create({
   searchbar: {
-    borderRadius: 5,
+    borderRadius: 10,
+    direction: "rtl",
+  },
+  inputText: {
+    textAlign: "right",
+    fontFamily: fonts.body_persian,
   },
 });

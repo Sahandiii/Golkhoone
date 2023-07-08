@@ -1,7 +1,6 @@
 import styled from "styled-components/native";
 import { Card } from "react-native-paper";
 
-
 export const PlantCard = styled(Card)`
   color: ${(props) => props.theme.colors.bg.primary};
   margin-bottom: ${(props) => props.theme.space[3]};
@@ -13,8 +12,9 @@ export const PlantCardCover = styled(Card.Cover)`
 `;
 
 export const Descript = styled.Text`
-  font-family: ${(props) => props.theme.fonts.body};
+  font-family: ${(props) => props.theme.fonts.body_persian};
   font-size: ${(props) => props.theme.fontSizes.caption};
+  text-align: right;
 `;
 
 export const Info = styled.View`

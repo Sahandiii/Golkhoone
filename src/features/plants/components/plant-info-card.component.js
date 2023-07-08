@@ -19,8 +19,8 @@ import {
 
 export const PlantInfoCard = ({ plant = {} }) => {
   const {
-    name = "Haworthia",
-    description = "Haworthia is a stunning little succulent native to South Africa",
+    name = "مونسترا برگ انجیری",
+    description = "گیاه برگ‌انجیری که با نام مونسترا هم شناخته می‌شود، بومی جنگل‌های بارانی در آمریکای مرکزی است.",
     photos = [
       "https://www.thetutuguru.com.au/wp-content/uploads/2020/12/Monstera-deliciosa-fruit-salad-plant-2.jpg",
     ],
@@ -53,7 +53,3 @@ export const PlantInfoCard = ({ plant = {} }) => {
   );
 };
 
-// const styles = StyleSheet.create({
-//   card: { backgroundColor: "white" },
-//   cover: { padding: 20, backgroundColor: "white" },
-// });

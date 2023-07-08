@@ -1,7 +1,10 @@
 export const fonts = {
   body: "Oswald_400Regular",
+  body_persian: "IranYekan_Regular",
   heading: "Lato_400Regular",
+  heading_persian: "IranYekan_Regular",
   monospace: "Oswald_400Regular",
+  monospace_persian: "IranYekan_Regular",
 };
 
 export const fontWeights = {
