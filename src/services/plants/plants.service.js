@@ -1,8 +1,8 @@
-import { plants } from "./mock/plants.json";
+import { plants_data } from "./mock/plants";
 
 export const plantsRequest = () => {
   return new Promise((resolve, reject) => {
-    const plant = plants;
+    const plant = plants_data.plants;
     if (!plant) {
       reject("Not found");
     }

@@ -2,7 +2,6 @@ import React from "react";
 import { StyleSheet, View } from "react-native";
 import { Image } from "react-native";
 import { SvgXml } from "react-native-svg";
-import { Asset } from 'expo';
 
 import { Spacer } from "../../../components/spacer/spacer.component";
 import { Text } from "../../../components/typography/text.component";
@@ -19,37 +18,21 @@ import {
   SectionEnd,
 } from "./plant-info-card.styles";
 
-const getStringInDoubleQuotes = (text) => {
-  return '"' + text + '"';
-};
-
 export const PlantInfoCard = ({ plant = {} }) => {
   const {
-    name = "مونسترا برگ انجیری",
-    description = "گیاه برگ‌انجیری که با نام مونسترا هم شناخته می‌شود، بومی جنگل‌های بارانی در آمریکای مرکزی است.",
-    photo = [
-      // "https://www.thetutuguru.com.au/wp-content/uploads/2020/12/Monstera-deliciosa-fruit-salad-plant-2.jpg",
-      // { uri: require("../../../../assets/plantPhotos/Dracaena-Compacta.jpg") },
-      // "../../../../assets/plantPhotos/Dracaena-Compacta.jpg",
-      require("../../../../assets/plantPhotos/Dracaena-Compacta.jpg"),
-    ],
+    name = "",
+    description = "",
+    photo = 0,
     difficultyLevel = 2,
     sunLevel = 3,
   } = plant;
 
-  // const doubleQuotationPhoto = getStringInDoubleQuotes(photo);
-  // console.log(doubleQuotationPhoto);
-  // console.log(photo);
-
   const sunlevelArray = Array.from(new Array(Math.floor(sunLevel)));
-  // const photoDequoted = photo.replace(/"/g, "");
-  // const photoDequoted = photo.replace(/^"(.*)"$/, "$1");
 
   return (
     <PlantCard elevation={5}>
-      {/* <PlantCardCover key={name} source={{ uri: photo[0] }} /> */}
-      {/* <PlantCardCover key={name} Image source={photo[0]} /> */}
-      <PlantCardCover key={name} Image source={require("../../../../assets/plantPhotos/Dracaena-Compacta.jpg")} />
+      <PlantCardCover key={name} Image source={photo} />
+      {/* <PlantCardCover key={name} Image source={require("../../../../assets/plantPhotos/Dracaena-Compacta.jpg")} /> */}
       <Info>
         <Text variant="label">{name}</Text>
         <Section>
