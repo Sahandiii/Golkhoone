@@ -16,6 +16,7 @@ import { useFonts as useIranyekan } from "expo-font";
 import { theme } from "./src/infrastructure/theme";
 import { PlantsScreen } from "./src/features/plants/screens/plants.screen";
 import { SafeArea } from "./src/components/utility/safe-area.component";
+import { PlantsContextProvider } from "./src/services/plants/plants.context";
 
 const Tab = createBottomTabNavigator();
 
@@ -64,19 +65,21 @@ export default function App() {
   return (
     <>
       <ThemeProvider theme={theme}>
-        <NavigationContainer>
-          <Tab.Navigator
-            screenOptions={createScreenOptions}
-            tabBarOptions={{
-              activeTintColor: "#556B2F",
-              inactiveTintColor: "gray",
-            }}
-          >
-            <Tab.Screen name="Plants" component={PlantsScreen} />
-            <Tab.Screen name="Education" component={Education} />
-            <Tab.Screen name="MyPlants" component={MyPlants} />
-          </Tab.Navigator>
-        </NavigationContainer>
+        <PlantsContextProvider>
+          <NavigationContainer>
+            <Tab.Navigator
+              screenOptions={createScreenOptions}
+              tabBarOptions={{
+                activeTintColor: "#556B2F",
+                inactiveTintColor: "gray",
+              }}
+            >
+              <Tab.Screen name="Plants" component={PlantsScreen} />
+              <Tab.Screen name="Education" component={Education} />
+              <Tab.Screen name="MyPlants" component={MyPlants} />
+            </Tab.Navigator>
+          </NavigationContainer>
+        </PlantsContextProvider>
       </ThemeProvider>
 
       <ExpoStatusBar style="auto" />
